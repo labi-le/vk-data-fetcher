@@ -16,7 +16,7 @@ class MessageEventTest extends TestCase
     protected function setUp(): void
     {
         $data = new DataFetcher(json_decode(self::RAW_INPUT_DATA_MESSAGE_EVENT, false));
-        $this->m = $data->MessageEvent();
+        $this->m = $data->messageEvent();
     }
 
     public function testGetPeerId(): void

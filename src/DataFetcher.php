@@ -74,7 +74,7 @@ class DataFetcher
         return new MessageNew($this->data->object->message);
     }
 
-    public function MessageEvent(): MessageEvent
+    public function messageEvent(): MessageEvent
     {
         return new MessageEvent($this->data->object);
     }
