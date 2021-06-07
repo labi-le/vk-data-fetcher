@@ -3,8 +3,7 @@
 declare(strict_types=1);
 
 
-namespace Astaroth\DataFetcher;
-
+use Astaroth\DataFetcher\DataFetcher;
 use PHPUnit\Framework\TestCase;
 
 

@@ -3,9 +3,8 @@
 declare(strict_types=1);
 
 
-namespace Astaroth\DataFetcher\Events;
-
 use Astaroth\DataFetcher\DataFetcher;
+use Astaroth\DataFetcher\Events\MessageNew;
 use PHPUnit\Framework\TestCase;
 
 class MessageNewTest extends TestCase
@@ -84,7 +83,7 @@ class MessageNewTest extends TestCase
         self::assertIsArray($this->m->getAttachments());
     }
 
-    public function testGetMessageTag()
+    public function testGetMessageTag(): void
     {
         self::assertIsString($this->m->getMessageTag());
     }

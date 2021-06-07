@@ -17,6 +17,7 @@ final class MessageEvent
     use EventTrait;
 
     private int $peer_id;
+    private int $user_id;
     private int $conversation_message_id;
     private object $payload;
     private string $event_id;
@@ -27,6 +28,14 @@ final class MessageEvent
     public function getPeerId(): int
     {
         return $this->getField("peer_id");
+    }
+
+    /**
+     * @return int
+     */
+    public function getUserId(): int
+    {
+        return $this->getField("user_id");
     }
 
     /**

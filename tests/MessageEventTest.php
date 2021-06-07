@@ -3,9 +3,8 @@
 declare(strict_types=1);
 
 
-namespace Astaroth\DataFetcher\Events;
-
 use Astaroth\DataFetcher\DataFetcher;
+use Astaroth\DataFetcher\Events\MessageEvent;
 use PHPUnit\Framework\TestCase;
 
 class MessageEventTest extends TestCase
@@ -22,6 +21,11 @@ class MessageEventTest extends TestCase
     public function testGetPeerId(): void
     {
         self::assertIsInt($this->m->getPeerId());
+    }
+
+    public function testGetUserId(): void
+    {
+        self::assertIsInt($this->m->getUserId());
     }
 
     public function testGetPayload(): void
