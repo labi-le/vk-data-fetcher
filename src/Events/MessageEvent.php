@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace Astaroth\DataFetcher\Events;
 
+use Astaroth\DataFetcher\ICompatibleEvent;
 use Astaroth\DataFetcher\Traits\EventTrait;
 
 /**
@@ -12,7 +13,7 @@ use Astaroth\DataFetcher\Traits\EventTrait;
  * @url https://vk.com/dev/groups_events
  * @package Astaroth\DataFetcher
  */
-final class MessageEvent
+final class MessageEvent implements ICompatibleEvent
 {
     use EventTrait;
 
@@ -62,4 +63,8 @@ final class MessageEvent
         return $this->getField("conversation_message_id");
     }
 
+    public function getFromId(): ?int
+    {
+        return $this->getUserId();
+    }
 }

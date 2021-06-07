@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace Astaroth\DataFetcher\Events;
 
+use Astaroth\DataFetcher\ICompatibleEvent;
 use Astaroth\DataFetcher\Traits\EventTrait;
 
 /**
@@ -13,7 +14,7 @@ use Astaroth\DataFetcher\Traits\EventTrait;
  * @url https://vk.com/dev/objects/message
  * @package Astaroth\DataFetcher
  */
-final class MessageNew
+final class MessageNew implements ICompatibleEvent
 {
     use EventTrait;
 
