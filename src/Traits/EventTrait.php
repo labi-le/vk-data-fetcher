@@ -44,9 +44,9 @@ trait EventTrait
 
     /**
      * peer_id - 2e9 = chat_id
-     * @return int
+     * @return int|null
      */
-    public function getChatId(): int
+    public function getChatId(): ?int
     {
         return $this->getField("chat_id");
     }

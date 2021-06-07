@@ -14,4 +14,6 @@ interface ICompatibleEvent
     public function getFromId(): ?int;
 
     public function getPeerId(): ?int;
+
+    public function getChatId(): ?int;
 }
