@@ -110,7 +110,7 @@ class MessageNewTest extends TestCase
 
     public function testGetReplyMessage(): void
     {
-        self::assertIsArray($this->m->getReplyMessage());
+        self::assertIsObject($this->m->getReplyMessage());
     }
 
     public function testGetConversationMessageId(): void

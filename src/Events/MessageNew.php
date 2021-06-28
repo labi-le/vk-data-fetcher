@@ -33,7 +33,7 @@ final class MessageNew implements ICompatibleEvent
     private object $geo;
     private object $payload;
     private array $fwd_messages;
-    private array $reply_message;
+    private object $reply_message;
     private object $action;
     private int $admin_author_id;
     private int $conversation_message_id;
@@ -142,9 +142,9 @@ final class MessageNew implements ICompatibleEvent
     }
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getFwdMessages(): array
+    public function getFwdMessages(): ?array
     {
         return $this->getField("fwd_messages");
     }
@@ -152,7 +152,7 @@ final class MessageNew implements ICompatibleEvent
     /**
      * @return array|null
      */
-    public function getReplyMessage(): ?array
+    public function getReplyMessage(): ?object
     {
         return $this->getField("reply_message");
     }
@@ -174,9 +174,9 @@ final class MessageNew implements ICompatibleEvent
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getConversationMessageId(): int
+    public function getConversationMessageId(): ?int
     {
         return $this->getField("conversation_message_id");
     }
