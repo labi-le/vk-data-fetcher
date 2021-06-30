@@ -1,12 +1,13 @@
-<?php /** @noinspection PhpPropertyOnlyWrittenInspection */
+<?php
+
+/** @noinspection PhpPureAttributeCanBeAddedInspection */
+/** @noinspection PhpUnusedPrivateFieldInspection */
 
 declare(strict_types=1);
 
 
 namespace Astaroth\DataFetcher\Events;
 
-use Astaroth\DataFetcher\ICompatibleEvent;
-use Astaroth\DataFetcher\Traits\EventTrait;
 
 /**
  * Class MessageNew
@@ -14,7 +15,7 @@ use Astaroth\DataFetcher\Traits\EventTrait;
  * @url https://vk.com/dev/objects/message
  * @package Astaroth\DataFetcher
  */
-final class MessageNew implements ICompatibleEvent
+final class MessageNew
 {
     use EventTrait;
 
@@ -134,7 +135,7 @@ final class MessageNew implements ICompatibleEvent
     }
 
     /**
-     * @return string|null
+     * @return object|null
      */
     public function getPayload(): ?object
     {
@@ -227,6 +228,11 @@ final class MessageNew implements ICompatibleEvent
     public function getMessageTag(): ?string
     {
         return $this->getField("message_tag");
+    }
+
+    public function getChatId(): ?int
+    {
+        return $this->getField("chat_id");
     }
 
     /**

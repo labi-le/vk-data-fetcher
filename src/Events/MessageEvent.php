@@ -1,19 +1,20 @@
 <?php
 
+/** @noinspection PhpPureAttributeCanBeAddedInspection */
+/** @noinspection PhpUnusedPrivateFieldInspection */
+
+
 declare(strict_types=1);
 
 
 namespace Astaroth\DataFetcher\Events;
-
-use Astaroth\DataFetcher\ICompatibleEvent;
-use Astaroth\DataFetcher\Traits\EventTrait;
 
 /**
  * Class MessageEvent
  * @url https://vk.com/dev/groups_events
  * @package Astaroth\DataFetcher
  */
-final class MessageEvent implements ICompatibleEvent
+final class MessageEvent
 {
     use EventTrait;
 
@@ -48,9 +49,9 @@ final class MessageEvent implements ICompatibleEvent
     }
 
     /**
-     * @return object
+     * @return object|null
      */
-    public function getPayload(): object
+    public function getPayload(): ?object
     {
         return $this->getField("payload");
     }
@@ -63,8 +64,12 @@ final class MessageEvent implements ICompatibleEvent
         return $this->getField("conversation_message_id");
     }
 
-    public function getFromId(): ?int
+    /**
+     * peer_id - 2e9 = chat_id
+     * @return int|null
+     */
+    public function getChatId(): ?int
     {
-        return $this->getUserId();
+        return $this->getField("chat_id");
     }
 }

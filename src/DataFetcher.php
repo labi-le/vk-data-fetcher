@@ -8,6 +8,7 @@ namespace Astaroth\DataFetcher;
 
 use Astaroth\DataFetcher\Events\MessageEvent;
 use Astaroth\DataFetcher\Events\MessageNew;
+use Astaroth\DataFetcher\Events\WallPostNew;
 
 /**
  * Class DataFetcher
@@ -77,6 +78,11 @@ class DataFetcher
     public function messageEvent(): MessageEvent
     {
         return new MessageEvent($this->data->object);
+    }
+
+    public function wallPostNew(): WallPostNew
+    {
+        return new WallPostNew($this->data->object);
     }
 
     /**

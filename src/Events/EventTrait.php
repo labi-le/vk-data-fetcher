@@ -1,13 +1,10 @@
 <?php
 
-declare(strict_types=1);
 
-
-namespace Astaroth\DataFetcher\Traits;
-
+namespace Astaroth\DataFetcher\Events;
 
 /**
- * Trait FillObjectTrait
+ * Trait EventTrait
  * @package Astaroth\DataFetcher\Events
  */
 trait EventTrait
@@ -40,14 +37,5 @@ trait EventTrait
     protected function getField(string $field): mixed
     {
         return $this->$field ?? null;
-    }
-
-    /**
-     * peer_id - 2e9 = chat_id
-     * @return int|null
-     */
-    public function getChatId(): ?int
-    {
-        return $this->getField("chat_id");
     }
 }
