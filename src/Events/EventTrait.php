@@ -24,14 +24,6 @@ trait EventTrait
                     $this->chat_id = $value - 2000000000;
                 }
 
-                if ($property === "payload") {
-                    if (is_object($value)) {
-                        $this->payload = $value;
-                    } elseif (is_string($value)) {
-                        $this->payload = json_encode($value, false);
-                    }
-                }
-
                 $this->$property = $value;
             }
         });

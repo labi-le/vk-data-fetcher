@@ -21,7 +21,7 @@ final class MessageEvent
     private int $peer_id;
     private int $user_id;
     private int $conversation_message_id;
-    private object $payload;
+    private mixed $payload;
     private string $event_id;
 
     /**
@@ -49,9 +49,9 @@ final class MessageEvent
     }
 
     /**
-     * @return object|null
+     * @return mixed
      */
-    public function getPayload(): ?object
+    public function getPayload(): mixed
     {
         return $this->getField("payload");
     }
