@@ -16,10 +16,11 @@ use Astaroth\DataFetcher\Events\WallPostNew;
  */
 class DataFetcher
 {
-
     private object $raw_data;
     private object $client_info;
     private string $type;
+    private int $group_id;
+    private string $event_id;
 
     /**
      * @return string
@@ -30,7 +31,7 @@ class DataFetcher
     }
 
     /**
-     * @return array|null
+     * @return ?object
      */
     public function getClientInfo(): ?object
     {
@@ -38,7 +39,7 @@ class DataFetcher
     }
 
     /**
-     * @return int|mixed
+     * @return ?int
      */
     public function getGroupId(): ?int
     {
@@ -53,10 +54,6 @@ class DataFetcher
         return $this->event_id;
     }
 
-    private int $group_id;
-
-    private string $event_id;
-
     public function __construct(private ?object $data = null)
     {
         if ($data?->type === 'message_new') {
@@ -69,16 +66,25 @@ class DataFetcher
         $this->event_id = $data?->event_id;
     }
 
+    /**
+     * @return MessageNew
+     */
     public function messageNew(): MessageNew
     {
         return new MessageNew($this->data->object->message);
     }
 
+    /**
+     * @return MessageEvent
+     */
     public function messageEvent(): MessageEvent
     {
         return new MessageEvent($this->data->object);
     }
 
+    /**
+     * @return WallPostNew
+     */
     public function wallPostNew(): WallPostNew
     {
         return new WallPostNew($this->data->object);
