@@ -53,21 +53,20 @@ class DataFetcher
         return $this->event_id;
     }
 
-
     private int $group_id;
 
     private string $event_id;
 
-    public function __construct(private object $data)
+    public function __construct(private ?object $data = null)
     {
-        if ($data->type === 'message_new') {
-            $this->client_info = $data->object->client_info;
+        if ($data?->type === 'message_new') {
+            $this->client_info = $data?->object->client_info;
         }
 
-        $this->type = $data->type;
+        $this->type = $data?->type;
         $this->raw_data = $data;
-        $this->group_id = $data->group_id;
-        $this->event_id = $data->event_id;
+        $this->group_id = $data?->group_id;
+        $this->event_id = $data?->event_id;
     }
 
     public function messageNew(): MessageNew
