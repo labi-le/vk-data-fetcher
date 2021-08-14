@@ -21,7 +21,7 @@ final class MessageEvent
     private int $peer_id;
     private int $user_id;
     private int $conversation_message_id;
-    private mixed $payload;
+    private array $payload;
     private string $event_id;
 
     /**
@@ -49,9 +49,9 @@ final class MessageEvent
     }
 
     /**
-     * @return mixed
+     * @return array|null
      */
-    public function getPayload(): mixed
+    public function getPayload(): ?array
     {
         return $this->getField("payload");
     }

@@ -32,7 +32,7 @@ final class MessageNew
     private array $attachments;
     private bool $important;
     private object $geo;
-    private mixed $payload;
+    private array $payload;
     private array $fwd_messages;
     private object $reply_message;
     private object $action;
@@ -135,9 +135,9 @@ final class MessageNew
     }
 
     /**
-     * @return mixed
+     * @return array|null
      */
-    public function getPayload(): mixed
+    public function getPayload(): ?array
     {
         return $this->getField("payload");
     }

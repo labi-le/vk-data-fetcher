@@ -24,7 +24,14 @@ trait EventTrait
                     $this->chat_id = $value - 2000000000;
                 }
 
-                $this->$property = $value;
+                if ($property === "payload") {
+                    $casted_payload = @json_decode($value, true);
+                    if ($casted_payload) {
+                        $this->payload = $casted_payload;
+                    }
+                } else {
+                    $this->$property = $value;
+                }
             }
         });
     }
