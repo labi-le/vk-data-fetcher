@@ -25,10 +25,11 @@ trait EventTrait
                 }
 
                 if ($property === "payload") {
-                    $casted_payload = @json_decode($value, true);
-                    if ($casted_payload) {
-                        $this->payload = $casted_payload;
-                    }
+                    $this->payload = match (gettype($value)) {
+                        "object" => (array) $value,
+                        "string" => @json_decode($value, true),
+                        "array" => $value,
+                    };
                 } else {
                     $this->$property = $value;
                 }
