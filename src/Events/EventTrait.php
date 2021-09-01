@@ -9,7 +9,7 @@ namespace Astaroth\DataFetcher\Events;
  */
 trait EventTrait
 {
-    private int $chat_id;
+    private ?int $chat_id = null;
 
     /**
      * EventTrait constructor.
