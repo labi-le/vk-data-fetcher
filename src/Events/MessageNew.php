@@ -9,13 +9,15 @@ declare(strict_types=1);
 namespace Astaroth\DataFetcher\Events;
 
 
+use Astaroth\DataFetcher\DataFetcher;
+
 /**
  * Class MessageNew
  * vk api >= 5.80
  * @url https://vk.com/dev/objects/message
  * @package Astaroth\DataFetcher
  */
-final class MessageNew
+final class MessageNew extends DataFetcher
 {
     use EventTrait;
 

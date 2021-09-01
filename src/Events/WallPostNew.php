@@ -7,11 +7,13 @@
 
 namespace Astaroth\DataFetcher\Events;
 
+use Astaroth\DataFetcher\DataFetcher;
+
 /**
  * Class WallPostNew
  * @package Astaroth\DataFetcher\Events
  */
-final class WallPostNew
+final class WallPostNew extends DataFetcher
 {
     use EventTrait;
 

@@ -9,12 +9,14 @@ declare(strict_types=1);
 
 namespace Astaroth\DataFetcher\Events;
 
+use Astaroth\DataFetcher\DataFetcher;
+
 /**
  * Class MessageEvent
  * @url https://vk.com/dev/groups_events
  * @package Astaroth\DataFetcher
  */
-final class MessageEvent
+final class MessageEvent extends DataFetcher
 {
     use EventTrait;
 
