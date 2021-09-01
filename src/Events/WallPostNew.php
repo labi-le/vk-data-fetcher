@@ -8,6 +8,7 @@
 namespace Astaroth\DataFetcher\Events;
 
 use Astaroth\DataFetcher\DataFetcher;
+use Astaroth\DataFetcher\Sort;
 
 /**
  * Class WallPostNew
@@ -15,6 +16,8 @@ use Astaroth\DataFetcher\DataFetcher;
  */
 final class WallPostNew extends DataFetcher
 {
+    use Sort;
+
     private int $id;
     private int $from_id;
     private int $owner_id;
@@ -33,7 +36,7 @@ final class WallPostNew extends DataFetcher
     public function __construct(?object $data = null)
     {
         parent::__construct($data);
-        ($this->callable_sort)($data?->object->message);
+        $this->sort($data?->object);
     }
 
     /**

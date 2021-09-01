@@ -10,6 +10,7 @@ namespace Astaroth\DataFetcher\Events;
 
 
 use Astaroth\DataFetcher\DataFetcher;
+use Astaroth\DataFetcher\Sort;
 
 /**
  * Class MessageNew
@@ -19,6 +20,8 @@ use Astaroth\DataFetcher\DataFetcher;
  */
 final class MessageNew extends DataFetcher
 {
+    use Sort;
+
     private int $id;
     private int $out;
     private int $date;
@@ -51,7 +54,7 @@ final class MessageNew extends DataFetcher
     public function __construct(?object $data = null)
     {
         parent::__construct($data);
-        ($this->callable_sort)($data?->object->message);
+        $this->sort($data?->object->message);
     }
 
     /**

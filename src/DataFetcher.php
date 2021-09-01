@@ -21,7 +21,6 @@ class DataFetcher
     private string $type;
     private int $group_id;
     private string $event_id;
-    protected \Closure $callable_sort;
 
 
     /**
@@ -58,25 +57,6 @@ class DataFetcher
 
     public function __construct(private ?object $data = null)
     {
-        $this->callable_sort = fn($data) => array_walk($data, function ($value, $property) {
-            if (property_exists($this, $property)) {
-
-                if ($property === "peer_id" && $value - 2000000000 > 0) {
-                    $this->chat_id = $value - 2000000000;
-                }
-
-                if ($property === "payload") {
-                    $this->payload = match (gettype($value)) {
-                        "object" => (array) $value,
-                        "string" => @json_decode($value, true),
-                        "array" => $value,
-                    };
-                } else {
-                    $this->$property = $value;
-                }
-            }
-        });
-
         if ($data?->type === "message_new") {
             $this->client_info = $data?->object->client_info;
         }
