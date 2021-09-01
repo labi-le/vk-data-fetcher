@@ -51,26 +51,7 @@ final class MessageNew extends DataFetcher
     public function __construct(?object $data = null)
     {
         parent::__construct($data);
-
-        array_walk($data, function ($value, $property) {
-            if (property_exists($this, $property)) {
-
-                if ($property === "peer_id" && $value - 2000000000 > 0) {
-                    $this->chat_id = $value - 2000000000;
-                }
-
-                if ($property === "payload") {
-                    $this->payload = match (gettype($value)) {
-                        "object" => (array) $value,
-                        "string" => @json_decode($value, true),
-                        "array" => $value,
-                    };
-                } else {
-                    $this->$property = $value;
-                }
-            }
-        });
-
+        ($this->callable_sort)($data?->object->message);
     }
 
     /**

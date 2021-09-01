@@ -30,6 +30,12 @@ final class WallPostNew extends DataFetcher
     private int|null|float $short_text_rate = null;
     private int $can_delete;
 
+    public function __construct(?object $data = null)
+    {
+        parent::__construct($data);
+        ($this->callable_sort)($data?->object->message);
+    }
+
     /**
      * @return int
      */
