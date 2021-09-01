@@ -15,8 +15,6 @@ use Astaroth\DataFetcher\DataFetcher;
  */
 final class WallPostNew extends DataFetcher
 {
-    use EventTrait;
-
     private int $id;
     private int $from_id;
     private int $owner_id;

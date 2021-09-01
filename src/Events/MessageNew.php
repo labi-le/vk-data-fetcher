@@ -19,8 +19,6 @@ use Astaroth\DataFetcher\DataFetcher;
  */
 final class MessageNew extends DataFetcher
 {
-    use EventTrait;
-
     private int $id;
     private int $out;
     private int $date;

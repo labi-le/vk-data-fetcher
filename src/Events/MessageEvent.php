@@ -18,12 +18,10 @@ use Astaroth\DataFetcher\DataFetcher;
  */
 final class MessageEvent extends DataFetcher
 {
-    use EventTrait;
-
     private int $peer_id;
     private int $user_id;
     private int $conversation_message_id;
-    private ?array $payload = null;
+    protected ?array $payload = null;
     private string $event_id;
 
     /**

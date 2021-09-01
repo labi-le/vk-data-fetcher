@@ -22,6 +22,10 @@ class DataFetcher
     private int $group_id;
     private string $event_id;
 
+    protected ?int $chat_id = null;
+    protected ?array $payload = null;
+
+
     /**
      * @return string
      */
@@ -64,6 +68,26 @@ class DataFetcher
         $this->raw_data = $data;
         $this->group_id = $data?->group_id;
         $this->event_id = $data?->event_id;
+
+        array_walk($data, function ($value, $property) {
+            if (property_exists($this, $property)) {
+
+                if ($property === "peer_id" && $value - 2000000000 > 0) {
+                    $this->chat_id = $value - 2000000000;
+                }
+
+                if ($property === "payload") {
+                    $this->payload = match (gettype($value)) {
+                        "object" => (array) $value,
+                        "string" => @json_decode($value, true),
+                        "array" => $value,
+                    };
+                } else {
+                    $this->$property = $value;
+                }
+            }
+        });
+
     }
 
     /**
