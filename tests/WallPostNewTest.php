@@ -98,7 +98,7 @@ class WallPostNewTest extends TestCase
 
     public function testIsIsFavorite()
     {
-        self::assertIsBool($this->p->isIsFavorite());
+        self::assertIsBool($this->p->isFavorite());
     }
 
     public function testGetPostType()

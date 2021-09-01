@@ -23,7 +23,7 @@ final class MessageEvent extends DataFetcher
     private int $peer_id;
     private int $user_id;
     private int $conversation_message_id;
-    private array $payload;
+    private ?array $payload = null;
     private string $event_id;
 
     /**
@@ -31,7 +31,7 @@ final class MessageEvent extends DataFetcher
      */
     public function getPeerId(): int
     {
-        return $this->getField("peer_id");
+        return $this->peer_id;
     }
 
     /**
@@ -39,7 +39,7 @@ final class MessageEvent extends DataFetcher
      */
     public function getUserId(): int
     {
-        return $this->getField("user_id");
+        return $this->user_id;
     }
 
     /**
@@ -47,7 +47,7 @@ final class MessageEvent extends DataFetcher
      */
     public function getEventId(): string
     {
-        return $this->getField("event_id");
+        return $this->event_id;
     }
 
     /**
@@ -55,7 +55,7 @@ final class MessageEvent extends DataFetcher
      */
     public function getPayload(): ?array
     {
-        return $this->getField("payload");
+        return $this->payload;
     }
 
     /**
@@ -63,7 +63,7 @@ final class MessageEvent extends DataFetcher
      */
     public function getConversationMessageId(): int
     {
-        return $this->getField("conversation_message_id");
+        return $this->conversation_message_id;
     }
 
     /**
@@ -72,6 +72,6 @@ final class MessageEvent extends DataFetcher
      */
     public function getChatId(): ?int
     {
-        return $this->getField("chat_id");
+        return $this->chat_id;
     }
 }

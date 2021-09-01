@@ -26,26 +26,26 @@ final class MessageNew extends DataFetcher
     private int $date;
     private int $peer_id;
     private int $from_id;
-    private string $text;
+    private ?string $text = null;
     private int $random_id;
 
-    private string $ref;
-    private string $ref_source;
-    private array $attachments;
+    private ?string $ref = null;
+    private ?string $ref_source = null;
+    private ?array $attachments = null;
     private bool $important;
-    private object $geo;
-    private array $payload;
-    private array $fwd_messages;
-    private object $reply_message;
-    private object $action;
-    private int $admin_author_id;
+    private ?object $geo = null;
+    private ?array $payload = null;
+    private ?array $fwd_messages = null;
+    private ?object $reply_message = null;
+    private ?object $action = null;
+    private ?int $admin_author_id = null;
     private int $conversation_message_id;
-    private bool $is_cropped;
-    private int $members_count;
-    private int $update_time;
-    private bool $was_listened;
-    private int $pinned_at;
-    private string $message_tag;
+    private ?bool $is_cropped = null;
+    private ?int $members_count = null;
+    private ?int $update_time = null;
+    private ?bool $was_listened = null;
+    private ?int $pinned_at = null;
+    private ?string $message_tag = null;
 
 
     /**
@@ -53,7 +53,7 @@ final class MessageNew extends DataFetcher
      */
     public function getId(): int
     {
-        return $this->getField("id");
+        return $this->id;
     }
 
     /**
@@ -61,7 +61,7 @@ final class MessageNew extends DataFetcher
      */
     public function getDate(): int
     {
-        return $this->getField("date");
+        return $this->date;
     }
 
     /**
@@ -69,7 +69,7 @@ final class MessageNew extends DataFetcher
      */
     public function getPeerId(): int
     {
-        return $this->getField("peer_id");
+        return $this->peer_id;
     }
 
     /**
@@ -77,7 +77,7 @@ final class MessageNew extends DataFetcher
      */
     public function getFromId(): int
     {
-        return $this->getField("from_id");
+        return $this->from_id;
     }
 
     /**
@@ -85,7 +85,7 @@ final class MessageNew extends DataFetcher
      */
     public function getText(): string
     {
-        return $this->getField("text");
+        return $this->text;
     }
 
     /**
@@ -93,7 +93,7 @@ final class MessageNew extends DataFetcher
      */
     public function getRandomId(): int
     {
-        return $this->getField("random_id");
+        return $this->random_id;
     }
 
     /**
@@ -101,7 +101,7 @@ final class MessageNew extends DataFetcher
      */
     public function getRef(): ?string
     {
-        return $this->getField("ref");
+        return $this->ref;
     }
 
     /**
@@ -109,7 +109,7 @@ final class MessageNew extends DataFetcher
      */
     public function getRefSource(): ?string
     {
-        return $this->getField("ref_source");
+        return $this->ref_source;
     }
 
     /**
@@ -117,7 +117,7 @@ final class MessageNew extends DataFetcher
      */
     public function getAttachments(): ?array
     {
-        return $this->getField("attachments");
+        return $this->attachments;
     }
 
     /**
@@ -125,7 +125,7 @@ final class MessageNew extends DataFetcher
      */
     public function isImportant(): bool
     {
-        return $this->getField("important");
+        return $this->important;
     }
 
     /**
@@ -133,7 +133,7 @@ final class MessageNew extends DataFetcher
      */
     public function getGeo(): ?object
     {
-        return $this->getField("geo");
+        return $this->geo;
     }
 
     /**
@@ -141,7 +141,7 @@ final class MessageNew extends DataFetcher
      */
     public function getPayload(): ?array
     {
-        return $this->getField("payload");
+        return $this->payload;
     }
 
     /**
@@ -149,7 +149,7 @@ final class MessageNew extends DataFetcher
      */
     public function getFwdMessages(): ?array
     {
-        return $this->getField("fwd_messages");
+        return $this->fwd_messages;
     }
 
     /**
@@ -157,7 +157,7 @@ final class MessageNew extends DataFetcher
      */
     public function getReplyMessage(): ?object
     {
-        return $this->getField("reply_message");
+        return $this->reply_message;
     }
 
     /**
@@ -165,7 +165,7 @@ final class MessageNew extends DataFetcher
      */
     public function getAction(): ?object
     {
-        return $this->getField("action");
+        return $this->action;
     }
 
     /**
@@ -173,7 +173,7 @@ final class MessageNew extends DataFetcher
      */
     public function getAdminAuthorId(): ?int
     {
-        return $this->getField("admin_author_id");
+        return $this->admin_author_id;
     }
 
     /**
@@ -181,7 +181,7 @@ final class MessageNew extends DataFetcher
      */
     public function getConversationMessageId(): ?int
     {
-        return $this->getField("conversation_message_id");
+        return $this->conversation_message_id;
     }
 
     /**
@@ -189,7 +189,7 @@ final class MessageNew extends DataFetcher
      */
     public function isCropped(): ?bool
     {
-        return $this->getField("is_cropped");
+        return $this->is_cropped;
     }
 
     /**
@@ -197,7 +197,7 @@ final class MessageNew extends DataFetcher
      */
     public function getMembersCount(): ?int
     {
-        return $this->getField("members_count");
+        return $this->members_count;
     }
 
     /**
@@ -205,7 +205,7 @@ final class MessageNew extends DataFetcher
      */
     public function getUpdateTime(): ?int
     {
-        return $this->getField("update_time");
+        return $this->update_time;
     }
 
     /**
@@ -213,7 +213,7 @@ final class MessageNew extends DataFetcher
      */
     public function isWasListened(): ?bool
     {
-        return $this->getField("was_listened");
+        return $this->was_listened;
     }
 
     /**
@@ -221,7 +221,7 @@ final class MessageNew extends DataFetcher
      */
     public function getPinnedAt(): ?int
     {
-        return $this->getField("pinned_at");
+        return $this->pinned_at;
     }
 
     /**
@@ -229,12 +229,12 @@ final class MessageNew extends DataFetcher
      */
     public function getMessageTag(): ?string
     {
-        return $this->getField("message_tag");
+        return $this->message_tag;
     }
 
     public function getChatId(): ?int
     {
-        return $this->getField("chat_id");
+        return $this->chat_id;
     }
 
     /**
@@ -242,6 +242,6 @@ final class MessageNew extends DataFetcher
      */
     public function getOut(): int
     {
-        return $this->getField("out");
+        return $this->out;
     }
 }

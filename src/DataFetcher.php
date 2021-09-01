@@ -17,7 +17,7 @@ use Astaroth\DataFetcher\Events\WallPostNew;
 class DataFetcher
 {
     private object $raw_data;
-    private object $client_info;
+    private ?object $client_info = null;
     private string $type;
     private int $group_id;
     private string $event_id;
@@ -56,7 +56,7 @@ class DataFetcher
 
     public function __construct(private ?object $data = null)
     {
-        if ($data?->type === 'message_new') {
+        if ($data?->type === "message_new") {
             $this->client_info = $data?->object->client_info;
         }
 

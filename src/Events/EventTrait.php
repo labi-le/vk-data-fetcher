@@ -36,14 +36,4 @@ trait EventTrait
             }
         });
     }
-
-    /**
-     * @getter
-     * @param string $field
-     * @return mixed
-     */
-    protected function getField(string $field): mixed
-    {
-        return $this->$field ?? null;
-    }
 }
